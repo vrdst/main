@@ -14,7 +14,7 @@
       <servlet-class>servlets.EmailApp</servlet-class>
   </servlet>
   <servlet-mapping>
-      <servlet-name>Email App</servlet-name>
+      <servlet-name>EmailApp</servlet-name>
       <url-pattern>/email</url-pattern>
   </servlet-mapping>
 </web-app>

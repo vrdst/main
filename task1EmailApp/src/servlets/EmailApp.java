@@ -21,7 +21,16 @@ public class EmailApp extends HttpServlet{
 		PrintWriter out = response.getWriter();
 		out.print("pocz¹tek servletu");
 		
+		String formName = request.getParameter("formName");
+		String formSurname = request.getParameter("formSurname");
+		String formPhoneNo = request.getParameter("formPhoneNo");
+		String formEmailAddress = request.getParameter("formEmailAddress");
 		
+		out.println(formName);
+		out.println(formSurname);
+		out.println(formPhoneNo);
+		out.println(formEmailAddress);
+
 	}
 
 }
