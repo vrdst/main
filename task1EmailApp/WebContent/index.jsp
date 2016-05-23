@@ -15,7 +15,7 @@ String formName = request.getParameter("formName");
 String formSurname = request.getParameter("formSurname");
 String formPhoneNo = request.getParameter("formPhoneNo");
 String formEmailAddress = request.getParameter("formEmailAddress");
-Map<String, String> formErrors = (HashMap<String,String>) request.getAttribute("formErrors");
+Map<String, String> formErrors = (Map<String,String>) request.getAttribute("formErrors");
 %>
 
 <form action="/Task1EmailApp/email" method="post">

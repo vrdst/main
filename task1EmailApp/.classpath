@@ -13,7 +13,35 @@
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="lib/itext-5.5.9/itextpdf-5.5.9.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/itext-5.5.9/itextpdf-5.5.9.jar"/>
+	<classpathentry kind="lib" path="lib/itext-5.5.9/itextpdf-5.5.9.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="M:/GitRepo/questy/task1EmailApp/WebContent/WEB-INF/lib/itextpdf-5.5.9.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="M:/GitRepo/questy/task1EmailApp/WebContent/WEB-INF/lib/xmlworker-5.5.9.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="M:/GitRepo/questy/task1EmailApp/WebContent/WEB-INF/lib/itext-pdfa-5.5.9.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="M:/GitRepo/questy/task1EmailApp/WebContent/WEB-INF/lib/itext-xtra-5.5.9.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/javax.mail.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
