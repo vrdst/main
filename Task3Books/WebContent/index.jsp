@@ -15,21 +15,27 @@ String title = request.getParameter("title");
 String author = request.getParameter("author");
 String isbn = request.getParameter("isbn");
 Map<String, String> formErrors = (Map<String,String>) request.getAttribute("formErrors");
+String bookAdded = (String) request.getAttribute("bookAdded");
 %>
 <h1>
 <form action="/Task3Books/books" method="post">
 	<label for="title">Title:</label>
-	<input type="text" name="title" value="${param.title}">
+	<input type="text" name="title" value="${param.title}"><br>
 	
   	<label for="author">Author:</label>
-  	<input type="text" name="author" value="${param.author}">
+  	<input type="text" name="author" value="${param.author}"><br>
   	
   	<label for="isbn">ISBN number:</label>
-  	<input type="text" name="isbn" value="${param.isbn}">
-	
-	<input type="submit" value="SAVE BOOK">
-	 <span class="error">${formErrors.fields}</span><br>
+  	<input type="text" name="isbn" value="${param.isbn}"><br>
+  	<span class="error">${formErrors.isbnNumeric}</span><br>
+  	<br>
+	<input type="submit" value="Save book">
+    
 </form>
+<input type="button" value="Show book index" onclick="document.location.href='fileContent.jsp'">
+	<br>
+	<span class="error">${bookAdded}</span>
+	<span class="error">${formErrors.fields}</span><br>
 </h1>
 <h2>
 </h2>

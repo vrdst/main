@@ -13,8 +13,17 @@
       <servlet-name>BooksApp</servlet-name>
       <servlet-class>servlets.BooksApp</servlet-class>
   </servlet>
+  <servlet>
+      <servlet-name>fileContent</servlet-name>
+      <servlet-class>fileContent.jsp</servlet-class>
+  </servlet>
   <servlet-mapping>
       <servlet-name>BooksApp</servlet-name>
       <url-pattern>/books</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+     <servlet-name>fileContent</servlet-name>
+     <url-pattern>/fileContent</url-pattern>
+</servlet-mapping>
+  
 </web-app>
