@@ -18,7 +18,10 @@ public class ExcelConverterMain {
 		Map<Integer, ExcelDataRow> rowContent = new HashMap<Integer, ExcelDataRow>();
 		
 		rowContent = mapAndConvertInputData(inputFile, dataSheetName, rowContent);
-		
+		createAndFillWorkBook(dataSheetName, rowContent);
+	}
+
+	private static void createAndFillWorkBook(final String dataSheetName, Map<Integer, ExcelDataRow> rowContent) {
 		XSSFWorkbook wb = new XSSFWorkbook();
 	    XSSFSheet sheet = wb.createSheet(dataSheetName);
 	    for(int i = 0; i <= rowContent.size() ; i++){
@@ -29,19 +32,20 @@ public class ExcelConverterMain {
 		    XSSFCell city = row.createCell(3);
 		    XSSFCell country = row.createCell(4);
 		    if(i == 0){
+		    	//header row
 		    	cellName.setCellValue("Name");
 		    	cellSurname.setCellValue("Surname");
-		    	address.setCellValue("Address");
+		    	address.setCellValue("Address(street, house number)");
 		    	city.setCellValue("City");
 		    	country.setCellValue("Country");
 		    } else {
+		    	//data rows
 		    	cellName.setCellValue(rowContent.get(i).getName());
 		    	cellSurname.setCellValue(rowContent.get(i).getSurName());
 		    	address.setCellValue(rowContent.get(i).getAddress());
 		    	city.setCellValue(rowContent.get(i).getCity());
 		    	country.setCellValue(rowContent.get(i).getCountry());
 		    }
-	    	
 	    }
 
 		try {
@@ -53,8 +57,6 @@ public class ExcelConverterMain {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 	}
 
 	private static Map<Integer, ExcelDataRow> mapAndConvertInputData(final String inputFile, final String dataSheetName,
