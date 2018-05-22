@@ -3,6 +3,7 @@ package calculator.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.LayoutPanel;
@@ -16,164 +17,33 @@ public class Task2GWTCalc implements EntryPoint {
 	LayoutPanel calcWindow = new LayoutPanel();
 	TextBox result = new TextBox();
 	FlexTable buttonSet = new FlexTable(); 
-	
+	int i;
 	//buttons
 	final String[] buttons = new String[]{"C", "^2", "%", "/",
-									"7", "8", "9", "*",
-									"4", "5", "6", "-",
-									"1", "2", "3", "+",
-									"+-", "0", ",", "="};
-	
-	
+										"7", "8", "9", "*",
+										"4", "5", "6", "-",
+										"1", "2", "3", "+",
+										"+-", "0", ",", "="};
 	public void onModuleLoad() {		
+		setDefaults();
+	}
+	
+	private void setDefaults(){
+		//create buttons and add events
 		calcWindow.setSize("190px", "300px");
 		result.setSize("180px", "30px");
 		buttonSet.setSize("180px", "250px");
 		
-		buttonSet.setWidget(0, 0, new Button(buttons[0], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[0]);
-			}
-		}));
-		
-		buttonSet.setWidget(0, 1, new Button(buttons[1], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[1]);
-				}
-		}));
-		
-		buttonSet.setWidget(0, 2, new Button(buttons[2], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[2]);
-				}
-		}));
-		
-		buttonSet.setWidget(0, 3, new Button(buttons[3], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[3]);
-				}
-		}));
-		
-		
-		buttonSet.setWidget(1, 0, new Button(buttons[4], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[4]);
-				}
-		}));
-		
-		buttonSet.setWidget(1, 1, new Button(buttons[5], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[5]);
-				}
-		}));
-		
-		buttonSet.setWidget(1, 2, new Button(buttons[6], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[6]);
-				}
-		}));
-		
-		
-		buttonSet.setWidget(1, 3, new Button(buttons[7], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[7]);
-				}
-		}));
-		
-		buttonSet.setWidget(2, 0, new Button(buttons[8], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[8]);
-				}
-		}));
-		
-		buttonSet.setWidget(2, 1, new Button(buttons[9], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[9]);
-				}
-		}));
-		
-		
-		buttonSet.setWidget(2, 2, new Button(buttons[10], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[10]);
-				}
-		}));
-		
-		buttonSet.setWidget(2, 3, new Button(buttons[11], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[11]);
-				}
-		}));
-		
-		buttonSet.setWidget(3, 0, new Button(buttons[12], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[12]);
-				}
-		}));
-		
-		
-		buttonSet.setWidget(3, 1, new Button(buttons[13], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[13]);
-				}
-		}));
-		
-		buttonSet.setWidget(3, 2, new Button(buttons[14], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[14]);
-				}
-		}));
-		
-		buttonSet.setWidget(3, 3, new Button(buttons[15], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[15]);
-			}
-		}));
-		
-		buttonSet.setWidget(4, 0, new Button(buttons[16], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[16]);
-			}
-		}));
-		
-		buttonSet.setWidget(4, 1, new Button(buttons[17], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[17]);
-			}
-		}));
-		
-		buttonSet.setWidget(4, 2, new Button(buttons[18], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[18]);
-			}
-		}));
-		
-		buttonSet.setWidget(4, 3, new Button(buttons[19], new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				addToResult(buttons[19]);
-			}
-		}));
+		for(i = 0 ; i < buttons.length ; i++){
 
+			buttonSet.setWidget(i/4, i%4, new Button(buttons[i], new ClickHandler() {
+				@Override
+				public void onClick(ClickEvent event) {
+					addToResult(buttons[i]);
+				}
+			}));
+			Window.alert(buttons[i]);
+		}
 		result.setReadOnly(true);
 		calcWindow.addStyleName("calc");
 		result.addStyleName("result");
@@ -181,26 +51,18 @@ public class Task2GWTCalc implements EntryPoint {
 		buttonSet.setStylePrimaryName("buttonset");
 		calcWindow.add(result);
 		calcWindow.add(buttonSet);
-		
 		RootPanel.get("calc").add(calcWindow);
-		
 	}
 	
 	private void addToResult(String textToAdd){
-		String currentResult = new String();
-		currentResult = result.getText();
-		double numberResult;
-		double firstNumber;
-		double secondNumber;
-		
-		if (currentResult.equals("error")){
-			result.setText("0");
-			return;
-		}
-		
+		String currentResult = result.getText();
+		double numberResult, firstNumber, secondNumber;
+
+		currentResult = errorCheck(currentResult);
+		Window.alert(textToAdd);
 		switch (textToAdd) {
 		case "0":
-			if(result.getText().equals("0")){
+			if(currentResult.equals("0")){
 				break;
 			}
 		case "1":
@@ -212,111 +74,93 @@ public class Task2GWTCalc implements EntryPoint {
 		case "7":
 		case "8":
 		case "9":
-			result.setText(result.getText() + textToAdd);
+			result.setText(currentResult + textToAdd);
 			break;
 		case "C":
 			result.setText("0");
 			break;
 		case "^2":
-			if(result.getText().length() > 0 && result.getText().substring(result.getText().length() - 1).matches("[0-9]")){
-			numberResult = Double.parseDouble(result.getText());
-			result.setText(String.valueOf(numberResult * numberResult));
-			break;
-			} else {
-			break;
+			if(currentResult.length() > 0 && currentResult.substring(currentResult.length() - 1).matches("[0-9]")){
+				numberResult = Double.parseDouble(currentResult);
+				result.setText(String.valueOf(numberResult * numberResult));
 			}
+			break;
 		case ",":
-			if(!result.getText().contains("[,]")){
-				result.setText(result.getText() + ",");
-			}
+			addComma(currentResult);
 			break;
 		case "+-":
-			if(result.getText().matches("[0-9]")){
-				result.setText("-" + result.getText());
-			}
+			addRemoveSubstractSign(currentResult);
 			break;
 		case "/":
-			if(result.getText().contains("[/]")){
-				if (result.getText().split("[/]").length > 1) {
-					if (Double.parseDouble(result.getText().split("[/]")[1]) == 0) {
-						result.setText("error");
-						break;
-					} else {
-						addToResult(buttons[19]);
-						break;
-					} 
-				}
-			} else if (!hasOperators(result.getText())){ 
-				result.setText(result.getText() + "/");
-				}
-			break;
 		case "*":
-			if(result.getText().split("[*]").length > 1){
-				addToResult(buttons[19]);
-				break;
-			} else if (!hasOperators(result.getText())){ 
-				result.setText(result.getText() + "*");
-			}
-			break;
 		case "+":
-			if(result.getText().split("[+]").length > 1){
-				addToResult(buttons[19]);
-				break;
-			} else if (!hasOperators(result.getText())){ 
-				result.setText(result.getText() + "+");
-			}
-			break;
 		case "-":
-			if(result.getText().split("[-]").length > 1 ){
-				addToResult(buttons[19]);
-				break;
-			} else if (!hasOperators(result.getText())){ 
-				result.setText(result.getText() + "-");
-			}
+			numberOperations(textToAdd, currentResult);
 			break;
 		case "=":
-			if(result.getText().split("[/]").length > 1){
-				firstNumber = Double.parseDouble(result.getText().split("[/]")[0]);
-				secondNumber = Double.parseDouble(result.getText().split("[/]")[1]);
+			if(currentResult.split("[/]").length > 1){
+				firstNumber = Double.parseDouble(currentResult.split("[/]")[0]);
+				secondNumber = Double.parseDouble(currentResult.split("[/]")[1]);
 				numberResult = firstNumber / secondNumber;
 				result.setText(String.valueOf(numberResult));
-				break;
-			} else if(result.getText().split("[*]").length > 1){
-				firstNumber = Double.parseDouble(result.getText().split("[*]")[0]);
-				secondNumber = Double.parseDouble(result.getText().split("[*]")[1]);
+			} else if(currentResult.split("[*]").length > 1){
+				firstNumber = Double.parseDouble(currentResult.split("[*]")[0]);
+				secondNumber = Double.parseDouble(currentResult.split("[*]")[1]);
 				numberResult = firstNumber * secondNumber;
 				result.setText(String.valueOf(numberResult));
-				break;
-			} else if(result.getText().split("[+]").length > 1){
-				firstNumber = Double.parseDouble(result.getText().split("[+]")[0]);
-				secondNumber = Double.parseDouble(result.getText().split("[+]")[1]);
+			} else if(currentResult.split("[+]").length > 1){
+				firstNumber = Double.parseDouble(currentResult.split("[+]")[0]);
+				secondNumber = Double.parseDouble(currentResult.split("[+]")[1]);
 				numberResult = firstNumber + secondNumber;
 				result.setText(String.valueOf(numberResult));
-				break;
-			} else if(result.getText().split("[-]").length > 1){
-				firstNumber = Double.parseDouble(result.getText().split("[-]")[0]);
-				secondNumber = Double.parseDouble(result.getText().split("[-]")[1]);
+			} else if(currentResult.split("[-]").length > 1){
+				firstNumber = Double.parseDouble(currentResult.split("[-]")[0]);
+				secondNumber = Double.parseDouble(currentResult.split("[-]")[1]);
 				numberResult = firstNumber - secondNumber;
 				result.setText(String.valueOf(numberResult));
-				break;
 			}
 			break;
 		default:
 			break;
 		}
-		if(result.getText().charAt(0) == '0'){
-			result.setText(result.getText().substring(1));
+		if(currentResult.charAt(0) == '0'){
+			result.setText(currentResult.substring(1));
 		}
 		return;
 	}
 	
+
+
+	private void numberOperations(String operator, String currentResult){
+		if (currentResult.split(operator).length > 1) {
+			if (operator.contains("/") && Double.parseDouble(currentResult.split(operator)[1]) == 0) {
+				result.setText("error");
+			} else {
+				addToResult(buttons[19]);
+			} 
+		} else if (!hasOperators(currentResult)){ 
+			result.setText(currentResult + operator);
+		}
+	}
+	private void addRemoveSubstractSign(String currentResult){
+		if(!currentResult.contains("-")){
+			result.setText("-" + currentResult);
+		} else {
+			currentResult.replace("-", "");
+		}
+	}
+	
+	private void addComma(String currentResult){
+		if(!currentResult.contains("[,]")){
+			result.setText(currentResult + ",");
+		}
+	}
+	private String errorCheck(String currentResult) {
+		return currentResult.equals("error") ? "0" : currentResult;
+	}
 	private boolean hasOperators(String inputString){
 		if(inputString.contains("-") || inputString.contains("+") || inputString.contains("/") || inputString.contains("*")){
 			return true;
-		} else {
-			return false;
-		}
-		
+		}return false;
 	}
-	
 }
